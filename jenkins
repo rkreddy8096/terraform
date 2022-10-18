@@ -9,11 +9,6 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/futurice/terraform-examples.git'
             }
         }
-        stage('terraform format check') {
-            steps{
-                sh 'terraform fmt'
-            }
-        }
         stage('terraform Init') {
             steps{
                 sh 'terraform init'
@@ -21,7 +16,6 @@ pipeline {
         }
         stage('terraform apply') {
             steps{
-                sh 'ls -ltra'
                 sh 'terraform apply --auto-approve'
             }
         }
