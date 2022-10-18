@@ -1,0 +1,30 @@
+pipeline {
+    agent {label 'linux'}
+    tools {
+       terraform 'terraform'
+    }
+    stages {
+        stage('Git checkout') {
+           steps{
+                git branch: 'master', url: 'https://github.com/futurice/terraform-examples.git'
+            }
+        }
+        stage('terraform format check') {
+            steps{
+                sh 'terraform fmt'
+            }
+        }
+        stage('terraform Init') {
+            steps{
+                sh 'terraform init'
+            }
+        }
+        stage('terraform apply') {
+            steps{
+                sh 'terraform apply --auto-approve'
+            }
+        }
+    }
+
+    
+}
