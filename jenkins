@@ -11,7 +11,6 @@ pipeline {
         }
         stage('terraform Init') {
             steps{
-                sh 'cd terraform-aws-ec2-with-vpc'
                 sh 'terraform init'
             }
         }
