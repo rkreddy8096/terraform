@@ -6,6 +6,11 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/futurice/terraform-examples.git'
             }
         }
+        stage('checkout'){
+            steps{
+                checkout scm
+            }
+        }
         stage('terraform') {
             steps{
                 sh 'cd ~'
