@@ -1,28 +1,16 @@
 pipeline {
     agent {label 'linux'}
-    tools {
-       terraform 'terraform'
-    }
     stages {
-        stage('Git checkout') {
+        stage('clone') {
            steps{
                 git branch: 'master', url: 'https://github.com/futurice/terraform-examples.git'
             }
         }
-        stage('terraform Init') {
+        stage('terraform') {
             steps{
                 sh 'terraform init'
+                sh 'terraform apply -auto-approve'
             }
         }
-        stage('validate') {
-            steps{
-                sh 'terraform validate'
-            }
-        }
-        stage('terraform apply') {
-            steps{
-                sh 'terraform apply --auto-approve'
-            }
-        }
-    }
+    } 
 }
