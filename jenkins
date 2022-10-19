@@ -8,7 +8,7 @@ pipeline {
         }
         stage('terraform') {
             steps{
-                sh 'terraform destroy -y'
+                sh 'terraform destroy plan.out'
             }
         }
     } 
