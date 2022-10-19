@@ -8,7 +8,7 @@ pipeline {
         }
         stage('terraform') {
             steps{
-                sh 'cd ~'
+                sh 'cd /temp'
                 sh 'terraform init'
                 sh 'terraform apply -auto-approve'
             }
