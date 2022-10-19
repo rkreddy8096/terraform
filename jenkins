@@ -11,7 +11,7 @@ pipeline {
         }
         stage('cd to terraform') {
             steps{
-                sh 'cd terraform'
+                sh 'ls'
             }
         }
         stage('terraform Init') {
