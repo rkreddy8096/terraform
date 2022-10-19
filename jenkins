@@ -9,11 +9,6 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/futurice/terraform-examples.git'
             }
         }
-        stage('cd to terraform') {
-            steps{
-                sh 'ls'
-            }
-        }
         stage('terraform Init') {
             steps{
                 sh 'terraform init'
