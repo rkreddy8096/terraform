@@ -1,0 +1,15 @@
+pipeline {
+    agent {label 'linux'}
+    stages {
+        stage('checkout'){
+            steps{
+                checkout scm
+            }
+        }
+        stage('terraform') {
+            steps{
+                sh 'terraform destroy'
+            }
+        }
+    } 
+}
